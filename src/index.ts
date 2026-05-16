@@ -230,6 +230,10 @@ async function getMediaSource(musicItem: IMusic.IMusicItem, quality: IMusic.IQua
     }
     return {
         url: `https://music.163.com/song/media/outer/url?id=${musicItem.id}.mp3`,
+        headers: {
+            "Referer": "https://music.163.com/",  // 下载专用 Referer
+            "User-Agent": headers["user-agent"]   // 复用 UA
+        }
     };
 }
 
